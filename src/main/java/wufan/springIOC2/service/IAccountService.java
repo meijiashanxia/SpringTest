@@ -1,4 +1,4 @@
-package wufan.springIOC.service;
+package wufan.springIOC2.service;
 
 /**
  * 账户业务层接口

@@ -1,4 +1,4 @@
-package li.factory;
+package wufan.springIOC1.factory;
 
 import java.io.IOException;
 import java.util.Enumeration;
@@ -21,6 +21,7 @@ public class JavaBeanFactory {
         try {
             //创建properties文件来配置 需要创建的类的对象 需要的全限定类名  在spring里 默认是application.xml
             properties.load(JavaBeanFactory.class.getClassLoader().getResourceAsStream("application.properties"));
+            System.out.println("读取配置文件...");
             System.out.println("properties.get(\"accountService\") = " + properties.get("accountService"));
             System.out.println("properties.get(\"accountDao\") = " + properties.get("accountDao"));
 
