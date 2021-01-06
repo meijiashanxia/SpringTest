@@ -1,7 +1,6 @@
-package wufan.springIOC1.factory;
+package main.java.wufan.springIOC1.factory;
 
 import java.io.IOException;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -20,7 +19,7 @@ public class JavaBeanFactory {
         properties = new Properties();
         try {
             //创建properties文件来配置 需要创建的类的对象 需要的全限定类名  在spring里 默认是application.xml
-            properties.load(JavaBeanFactory.class.getClassLoader().getResourceAsStream("application.properties"));
+            properties.load(JavaBeanFactory.class.getClassLoader().getResourceAsStream("SpringIOC1application.properties"));
             System.out.println("读取配置文件...");
             System.out.println("properties.get(\"accountService\") = " + properties.get("accountService"));
             System.out.println("properties.get(\"accountDao\") = " + properties.get("accountDao"));

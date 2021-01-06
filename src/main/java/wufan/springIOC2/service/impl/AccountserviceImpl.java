@@ -1,9 +1,9 @@
-package wufan.springIOC2.service.impl;
+package main.java.wufan.springIOC2.service.impl;
 
 
-import wufan.springIOC2.Dao.AccountDao;
-import wufan.springIOC2.Dao.Impl.AccountDaoImpl;
-import wufan.springIOC2.service.IAccountService;
+import main.java.wufan.springIOC2.Dao.AccountDao;
+import main.java.wufan.springIOC2.Dao.Impl.AccountDaoImpl;
+import main.java.wufan.springIOC2.service.IAccountService;
 
 public class AccountserviceImpl implements IAccountService {
     private int i2= 0;

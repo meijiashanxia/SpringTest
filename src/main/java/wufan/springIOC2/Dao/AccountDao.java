@@ -1,4 +1,4 @@
-package wufan.springIOC2.Dao;
+package main.java.wufan.springIOC2.Dao;
 
 public interface AccountDao {
     void addAccount();

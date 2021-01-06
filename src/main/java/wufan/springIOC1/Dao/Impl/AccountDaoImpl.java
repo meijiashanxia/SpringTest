@@ -1,7 +1,7 @@
-package wufan.springIOC1.Dao.Impl;
+package main.java.wufan.springIOC1.Dao.Impl;
 
 
-import wufan.springIOC1.Dao.AccountDao;
+import main.java.wufan.springIOC1.Dao.AccountDao;
 
 public class AccountDaoImpl implements AccountDao {
     public void addAccount() {

@@ -1,4 +1,4 @@
-package wufan.tool.ConnetMysql8NoSpring;
+package main.java.wufan.tool.ConnetMysql8NoSpring;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,4 +1,4 @@
-package wufan.tool.javaRSA;
+package main.java.wufan.tool.javaRSA;
 
 import java.io.ByteArrayOutputStream;
 import java.security.KeyFactory;

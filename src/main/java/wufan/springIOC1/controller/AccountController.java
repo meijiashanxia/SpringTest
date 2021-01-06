@@ -1,10 +1,10 @@
-package wufan.springIOC1.controller;
+package main.java.wufan.springIOC1.controller;
 
 
-import wufan.springIOC1.Dao.AccountDao;
-import wufan.springIOC1.Dao.Impl.AccountDaoImpl;
-import wufan.springIOC1.factory.JavaBeanFactory;
-import wufan.springIOC1.service.IAccountService;
+import main.java.wufan.springIOC1.Dao.AccountDao;
+import main.java.wufan.springIOC1.Dao.Impl.AccountDaoImpl;
+import main.java.wufan.springIOC1.factory.JavaBeanFactory;
+import main.java.wufan.springIOC1.service.IAccountService;
 
 public class AccountController {
     //private static IAccountService accountService = (IAccountService) JavaBeanFactory.getBean("accountService");
