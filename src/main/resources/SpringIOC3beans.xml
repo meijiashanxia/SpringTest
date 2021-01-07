@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--Spring对Bean的管理细节
+        1、三种创建Bean的方式
+        2、bean对象的作用范围
+        3、bean对象的生命周期
+    -->
+    <!--  第一中创建方式 当Bean的配置信息 配以id及class属性 Spring会通过调用该的默认构造函数来实例化对象，
+    如无构造函数，则无法创建
+    -->
+    <bean id="accountService" class="main.java.wufan.springIOC3.service.impl.AccountserviceImpl" ></bean>
+
+<!--  普通工厂的普通方法创建bean  -->
+    <bean id="factory" class="main.java.wufan.springIOC3.factory.JavaBeanFactory"></bean>
+    <bean id="accountDao" factory-bean="factory" factory-method="getInstance">
+        <constructor-arg type="java.lang.String" value="getInstance"/>
+    </bean>
+
+    <!--  普通工厂的静态方法创建bean  -->
+    <bean id="staticaccountDao" class="main.java.wufan.springIOC3.factory.StaticJavaBeanFactory" factory-method="getInstance">
+        <constructor-arg type="java.lang.String" value="StaticJavaBeanFactory"/>
+    </bean>
+</beans>
