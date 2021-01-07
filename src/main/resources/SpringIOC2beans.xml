@@ -3,6 +3,6 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="accountService" class="main.java.wufan.springIOC2.service.impl."></bean>
-    <bean id="accountDao" class="wufan.springIOC2.Dao.Impl.AccountDaoImpl"></bean>
+    <bean id="accountService" class="main.java.wufan.springIOC2.service.impl.AccountserviceImpl"></bean>
+    <bean id="accountDao" class="main.java.wufan.springIOC2.Dao.Impl.AccountDaoImpl"></bean>
 </beans>

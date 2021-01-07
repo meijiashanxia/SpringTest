@@ -6,8 +6,13 @@ import main.java.wufan.springIOC2.Dao.Impl.AccountDaoImpl;
 import main.java.wufan.springIOC2.service.IAccountService;
 
 public class AccountserviceImpl implements IAccountService {
-    private int i2= 0;
+    private int i2 = 0;
     private AccountDao accountDao = new AccountDaoImpl();
+
+    public AccountserviceImpl() {
+        System.out.println(" 对象被创建了 ");
+    }
+
     public void addAccount() {
 
         accountDao.addAccount();
