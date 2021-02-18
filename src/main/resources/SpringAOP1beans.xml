@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="main.java.wufan.springIOC5.*" ></context:component-scan>
+
+    <!--定义一个jdbc数据源，创建一个驱动管理数据源的bean -->
+    <bean id = "jdbcDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${db.Driver}"/>
+        <property name="url" value="${db.url}"/>
+        <property name="username" value="${db.username}"/>
+        <property name="password" value="${db.pwd}"/>
+    </bean>
+
+    <!-- 德鲁伊配置数据连接池 -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="driverClassName" value="${db.Driver}"/>
+        <property name="url" value="${db.url}"/>
+        <property name="username" value="${db.username}"/>
+        <property name="password" value="${db.pwd}"/>
+        <property name="maxActive" value="${db.maxActive}" />
+        <!--<property name="maxActive" value="${maxActive}" />-->
+        <!-- filters：统计监控信息，value是一个string,支持组合配置，如stat,log4j,那么问题来了，如果自定义的filter该如何配置呢，可以通过bean的形式添加 -->
+        <!--          <property name="filters" value="${filters}" /> -->
+
+    </bean>
+
+    <!--配置文件-->
+    <bean id="propertiesFactoryBean" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath*:SpringIOC5application.properties</value>
+            </list>
+        </property>
+        <property name="fileEncoding" value="UTF-8"></property>
+    </bean>
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="properties" ref="propertiesFactoryBean">
+
+        </property>
+    </bean>
+
+
+    <!--3 会话工厂bean sqlSessionFactoryBean -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 数据源 -->
+        <!--<property name="dataSource" ref="jdbcDataSource"></property>-->
+        <property name="dataSource" ref="dataSource"></property>
+        <!--<property name="typeAliasesPackage" value="com.zhangguo.bookstore.entities"></property>-->
+        <!-- sql映射文件路径 -->
+        <property name="mapperLocations" value="classpath*:main/java/wufan/springIOC5/Dao/*Mapper.xml"></property>
+    </bean>
+
+    <!--4 自动扫描对象关系映射 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--指定会话工厂，如果当前上下文中只定义了一个则该属性可省去 -->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+        <!-- 指定要自动扫描接口的基础包，实现接口 -->
+        <property name="basePackage" value="main.java.wufan.springIOC5.Dao"></property>
+    </bean>
+
+    <!-- 创建一个sqlSession对象 -->
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg index="0" ref="sqlSessionFactory" />
+    </bean>
+
+
+    <bean id="bookServiceImpl" class="main.java.wufan.springIOC5.Service.Impl.BookServiceImpl" autowire="byName" />
+
+
+
+</beans>
